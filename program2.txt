@@ -1,0 +1,11 @@
+ADDI x8, x0, 1 # a = 1
+ADDI x9, x0, 3 # b = 3
+LOOP: SLTI x7, x8, 10  # while (a<10) {D[a] = b+a; a+=1;}
+BEQ x7, x0, DONE
+ADD x28, x9, x8
+SLLI x7, x8, 2
+ADD x7, x18, x7 # assuming the base address of D is stored in x18
+SW x28, 0(x7)
+ADDI x8, x8, 1
+JAL x0, LOOP
+DONE:

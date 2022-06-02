@@ -1,0 +1,9 @@
+ADDI x8, x0, 0  # a = 0
+ADDI x9, x0, 2  # b = 2
+ADDI x5, x0, 0 		# This the assembly program for a simple for_loop shown below:
+LOOP: SLTI x7, x5, 10	# for (i=0;i<10;i++) a+=b;
+BEQ x7, x0, END
+ADD x8, x8, x9
+ADDI x5, x5, 1
+JAL x0, LOOP
+END:

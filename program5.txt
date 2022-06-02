@@ -1,0 +1,23 @@
+FIB: ADDI x5, x0, 0 # int fib(int n) { if(n==0) return 0; else if(n==1) return 1; else return fib(n-1) + fib(n-2); }
+ADDI x6, x0, 1
+BEQ x10, x5, L1
+BEQ x10, x6, L2
+ADDI x2, x2, -12 
+SW x1, 8(x2)
+SW x10, 4(x2)
+SW x8, 0(x2)
+ADDI x10, x10, -1 
+JAL x0, FIB
+ADDI x8, x10, 0
+LW x10, 4(x2)
+ADDI x10, x10, -1 
+JAL x0, FIB
+ADD x10, x10, x8
+LW x8, 0(x2)
+LW x1, 8(x2)
+ADDI x2, x2, 12 
+JALR x0, 0(x1)
+L1: ADDI x10, x0, 0 
+JALR x0, 0(x1)
+L2: ADDI x10, x0, 1 
+JALR x0, 0(x1)

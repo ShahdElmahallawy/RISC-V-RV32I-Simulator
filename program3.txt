@@ -1,0 +1,6 @@
+ADDI x21, x0, 1 # k = 1
+BNE x21, x0, Else # if(k==0) f=5; else f=10;
+ADDI x8, x0, 5
+JAL x0, Exit
+Else: ADDI x8, x0, 10
+Exit:
